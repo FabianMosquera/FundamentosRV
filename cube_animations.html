@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varias Animaciones</title>
+    <!--A-frame library-->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+          animation__2="property: position; from: 0 5 -10; to: 0 10 -10; dir: alternate; loop: true"
+          animation__color="property: material.color; type: color; to: blue">
+          <a-box id="cuborojo" position="0 5 -10" color="red" scale="2 2 2"></a-box>
+        </a-entity>
+    </a-scene>
+</body>
+</html>
