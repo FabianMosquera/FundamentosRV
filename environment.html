@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Environments + Modelos 3D</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script
+        src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 </head>
+
 <body>
-    <a-scene>
+    <a-scene physics="gravity:-9.8">
         <!--Creamos la biblioteca de assets-->
         <a-assets>
             <!--Creamos un asset item que traera nuestro objeto para ser renderizado en la escena-->
             <!--dragon-->
-            <a-asset-item id="dragon" src=assets/models/dragon/alduin-dragon.obj></a-asset-item>
+            <!--<a-asset-item id="dragon" src=assets/models/dragon/alduin-dragon.obj></a-asset-item>
             <a-asset-item id="mtlDragon" src=assets/models/dragon/alduin-dragon.mtl></a-asset-item>
-            <!--casa-->
+            <casa-->-->
             <a-asset-item id="casa" src=assets/models/casa/old-house.obj></a-asset-item>
             <a-asset-item id="mtlCasa" src=assets/models/casa/old-house.mtl></a-asset-item>
         </a-assets>
 
-        <a-entity environment="preset: japan; fog: 0.8; ground: hills; groundYScale: 100 playArea: 5"></a-entity>
+
+        <!-- Camera -->
+        <a-entity id="rig" movement-controls kinematic-body>
+            <a-entity camera position="0 1.6 0" look-controls="pointerLockEnabled: true">
+            </a-entity>
+        </a-entity>
+
+        <a-plane scale="50 50 1" rotation="-90 0 0"  position="0 0 -1" static-body></a-plane>
+
+        <a-entity environment="preset: forest; fog: 0.8; ground: hills; groundYScale: 100 playArea: 5">
+        </a-entity>
         <!--Importar modelo 3D-->
-        <a-entity obj-model="obj: #dragon; mtl: #mtlDragon" scale="0.01 0.01 0.01" position= "0 2.5 0"></a-entity>
-        <a-entity obj-model="obj: #casa; mtl: #mtlCasa"  position= "10 0 0"></a-entity>
+        <!--<a-entity obj-model="obj: #dragon; mtl: #mtlDragon" scale="0.01 0.01 0.01" position= "0 2.5 0"></a-entity>-->
+        <a-entity obj-model="obj: #casa; mtl: #mtlCasa" position="10 0 0" static-body></a-entity>
+
     </a-scene>
 </body>
+
 </html>
