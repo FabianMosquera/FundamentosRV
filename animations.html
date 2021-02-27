@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-plane rotation="-90 0 0" width="30" height="30" color="green"></a-plane>
+        <a-box id="cuborojo" position="0 5 -10" color="red" scale="2 2 2" Animation="property: position; from:
+        0 5 -10; to: 0 10 -10; dir: alternate; loop: true">
+        <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+            <a-sphere id="s1" position="5 0 0" color="mediumseagreen"></a-sphere>
+        </a-box>
+        <a-box id="cubonegro" color="black" scale="2 2 2"look-at="#s1" position="5 1 -5"></a-box>
+    </a-scene>
+</body>
+</html>
