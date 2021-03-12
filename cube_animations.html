@@ -1,20 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varias Animaciones</title>
     <!--A-frame library-->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <script>
+        AFRAME.registerComponent("change-color-on-click", {
+          // Could use a schem to preserve the color! then simply change it on update
+          // if clicked?
+          init: function () {
+            var COLORS = [
+              "pink",
+              //'blue',
+              "yellow",
+              "red",
+              "peachpuff",
+              "#2EAFAC",
+              "#BAE",
+            ];
+            this.el.addEventListener("click", function (evt) {
+              var randomIndex = Math.floor(Math.random() * COLORS.length);
+              var newColor = COLORS[randomIndex];
+              this.setAttribute("material", "color", newColor);
+              console.log(
+                "I was clicked at: ",
+                evt.detail.intersection.point,
+                "and my new color is: ",
+                newColor
+              );
+            });
+          },
+        });
+      </script>
     <a-scene>
-        <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+      <!--<a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
           animation__2="property: position; from: 0 5 -10; to: 0 10 -10; dir: alternate; loop: true"
-          animation__color="property: material.color; type: color; to: blue">
+          animation__color="property: color; type: color; to: blue; ">
           <a-box id="cuborojo" position="0 5 -10" color="red" scale="2 2 2"></a-box>
-        </a-entity>
+        </a-entity>-->
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+      <a-entity
+        geometry="primitive: box; id: cubo"
+        material="color: red"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+        animation__2="property: position; from: 0 5 -10; to: 0 10 -10; dir: alternate; loop: true"
+        animation__mouseenter="property: components.material.material.color; type: color; to: blue; startEvents: mouseenter; dur: 500"
+        ;
+        animation__mouseleave="property: components.material.material.color; type: color; to: red; startEvents: mouseleave; dur: 500"
+        ;
+      >
+      </a-entity>
+      
+      <a-plane rotation="-90 0 0" color="blue" scale="50 50 1" change-color-on-click></a-plane>
     </a-scene>
-</body>
+  </body>
 </html>
