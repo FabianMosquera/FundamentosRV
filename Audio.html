@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+<body>
+    <a-assets>
+        <audio id="ambiente" src="assets/sounds"></audio>
+    </a-assets>
+
+    <a-camera>
+        <a-cursor></a-cursor>
+    </a-camera>
+
+    <a-plane rotation="-90 0 0" color="blue" scale="50 50 1"></a-plane>
+    <a-box position="0 -1 5" color="red" sound="src: #ambiente; on: click"></a-box>
+    <!--<a-sound sound="src: #ambiente; autoplay: true"></a-sound>-->
+</body>
+</html>
